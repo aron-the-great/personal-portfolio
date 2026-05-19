@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary accent — safety orange (orange-500 / orange-400) */
+    --accent: 249 115 22;
+    --accent-soft: 251 146 60;
+
+    /* Secondary accent — instrument amber (amber-500 / amber-300) */
+    --warn: 245 158 11;
+    --warn-soft: 252 211 77;
+
+    /* Midnight navy surfaces */
+    --bg: 10 16 32;              /* page background */
+    --surface: 14 21 41;         /* card */
+    --surface-hover: 19 27 51;   /* card hover */
+    --border: 27 38 64;          /* default border */
+    --border-hover: 39 52 90;    /* hover border */
+
+    /* Blueprint grid (drafting paper) */
+    --grid-color: 255 255 255;
+    --grid-fine-opacity: 0.025;
+    --grid-bold-opacity: 0.05;
+    --grid-fine: 32px;
+    --grid-bold: 160px;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-50;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent) / 0.25);
+    color: rgb(var(--accent));
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-800 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-navy-700;
+  }
+}
+
+@layer utilities {
+  .ring-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950 focus-visible:ring-accent;
+  }
+
+  /* Drafting-paper grid. Fine 32px lines with bolder 5-cell (160px) gridlines. */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgb(var(--grid-color) / var(--grid-fine-opacity)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to right,
+        rgb(var(--grid-color) / var(--grid-fine-opacity)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(var(--grid-color) / var(--grid-bold-opacity)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to right,
+        rgb(var(--grid-color) / var(--grid-bold-opacity)) 1px,
+        transparent 1px
+      );
+    background-size:
+      var(--grid-fine) var(--grid-fine),
+      var(--grid-fine) var(--grid-fine),
+      var(--grid-bold) var(--grid-bold),
+      var(--grid-bold) var(--grid-bold);
+  }
+
+  /* Data-readout style: monospaced, tracked-out, uppercase. For dates, coords, tags. */
+  .text-readout {
+    @apply font-mono text-xs uppercase tracking-[0.12em];
+  }
+}
