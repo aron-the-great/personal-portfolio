@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github, Lock, Unlink, Wrench } from 'lucide-react';
+import { ArrowUpRight, FileText, Github, Lock, Unlink, Wrench } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Tag } from '@/components/ui/Tag';
 import type { Project } from '@/data/projects';
@@ -106,6 +106,44 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.tags.map((t) => (
             <Tag key={t}>{t}</Tag>
           ))}
+        </div>
+      )}
+
+      {(project.demoUrl || project.repoUrl || project.presentationUrl) && (
+        <div className="mt-5 flex flex-wrap gap-2 pt-4 border-t border-navy-800">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded px-2 py-1 text-xs font-mono text-accent/80 hover:text-accent hover:bg-accent/5 transition-colors"
+            >
+              <ArrowUpRight size={12} />
+              Demo
+            </a>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded px-2 py-1 text-xs font-mono text-accent/80 hover:text-accent hover:bg-accent/5 transition-colors"
+            >
+              <Github size={12} />
+              Code
+            </a>
+          )}
+          {project.presentationUrl && (
+            <a
+              href={project.presentationUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded px-2 py-1 text-xs font-mono text-accent/80 hover:text-accent hover:bg-accent/5 transition-colors"
+            >
+              <FileText size={12} />
+              Presentation
+            </a>
+          )}
         </div>
       )}
     </Card>

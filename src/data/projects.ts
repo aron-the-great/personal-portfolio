@@ -12,6 +12,8 @@ export type Project = {
   repoUrl?: string;
   /** Public demo / write-up link. Omit (or use `confidential`) if not shareable. */
   demoUrl?: string;
+  /** Presentation or technical document link. */
+  presentationUrl?: string;
   /**
    * Mark the project as not publicly shareable.
    * When true, repoUrl/demoUrl are hidden and a badge is shown instead.
@@ -43,9 +45,9 @@ export const projects: Project[] = [
     slug: 'supersonic-combustor',
     title: 'Supersonic Combustor Design and Testing',
     purpose:
-      'Design and test future supersonic engines for future supersonic flight.',
+      'Help implement and characterize different flameholding mechanism for supersonic flow scramjet engines.',
     contribution:
-      'Coming Soon',
+      'Supporting instrumentation electrical routing, instrumentation testing, and engineering an integrated software interface that unifies real-time data reading, remote valve operation, and high-speed camera controls to enhance test monitoring efficiency.',
     impact:
       'Coming Soon',
     tags: ['Testing', 'Thermofluids', 'Propulsion'],
@@ -89,6 +91,7 @@ export const projects: Project[] = [
       'Achieved first successful testing of new engine test stand with accurate force reading; stand is now the team\'s primary platform, with a 4-ft afterburner extension under active development.',
     tags: ['SolidWorks', 'CAD', 'Test Engineering', 'Structural Analysis'],
     repoUrl: undefined,
+    presentationUrl: '/EXACT-1 PDR.pdf',
     featured: true,
   },
   {
